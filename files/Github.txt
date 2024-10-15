@@ -1,0 +1,13 @@
+Uploading Repository:
+After setting up git, we need to create a github account.
+create a new repository, which is a project, name it a name related to project
+To push your files to your github, go to git -> manage remote -> press plus icon -> add the repository link
+commit "ctrl+K" is for git and push "ctrl+shift+K" is for github which uploads the latest version to github
+Github gets all the files added in git repository
+
+Downloading a repository:
+You can either download a zip file of the repository manually by clicking on the green code button on the github's repository page and selecting "download zip", then extract them, open a new project and paste them there.
+Or you can clone it in your pycharm IDE.
+To clone it you need to have Git enabled, and from git menu select clone
+Enter the url of the public repository that you get from clicking the code button and then copy button under HTTPS, then select the destination path (preferably an empty directory).
+You will get an option to create a new virtual environment and install the modules mentioned in the requirement.txt file if any.

@@ -1,0 +1,9 @@
+[
+  {"questionText":  "What is the Capital of Pakistan",
+  "answerOptions": ["Karachi","Lahore", "GHQ Pindi", "Islamabad"],
+  "correctAnswer": 3},
+
+  {"questionText":  "What is Pakistan's favourite sport",
+  "answerOptions": ["Driving Black Vigo","Injustice against the poor", "Corruption", "All of the Above"],
+  "correctAnswer": 4}
+]

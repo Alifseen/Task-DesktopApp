@@ -1,0 +1,20 @@
+Integration:
+go to VCS -> Enable Version Control Integration -> select git
+colored file names means files are integrated.
+red color means the files are not included in the version control and not getting tracked, and need to be added to repository. To do that you need to perform "commit" operations
+
+Commit:
+press "ctrl+k" to initiate commit operation -> in the window to the left, enter a short description (start with a verb), select the files you want to commit from the upper box and press commit
+It is recommended to add venv files to git ignore so they are not tracked by right clicking venv folder -> select git -> select add to git ignore
+you can manually add the names of files you want git to ignore as well write names for folders and .hiddenfilename for hidden files
+we need to commit the code anytime we make a change to it. Git automatically recognizes anycode we changed and only commits that code.
+Note: if the change is not very significant, you can simply ammend a commit by checking the ammend box.
+
+rollback:
+You can press "alt+f9" to see the commits versions you have made and the files changed in each version. Clicking that file opens it side by side and shows the differences.
+git checkout, right click the version and select checkout revision.  The yellow tag is applied to the current version that is being edited, which means you are making this the latest version, you are simply checking it out and editing an old version
+git reset, for permanent changes, you need to right click and select "reset to current branch" and select hard, this makes the other branch disappear and makes this current one the latest one.
+
+Unwanted edits:
+If you are running experiments on your file and dont want the changes to show in commit, you can either manualy copy the file, make the experiments and then delete it once you are done.
+Or, make sure everything is commited before making the experimental changes and then roll back to that commit once you are done.
