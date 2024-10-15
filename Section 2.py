@@ -23,15 +23,31 @@ This is bad practice because it:
 
 
 ## An example is using the while loop to check password, if it is the same, stop the loop, if not continue
-password = ""
+# password = ""
+#
+# while password != "pass123":
+#     password = input("Enter Password: ")
+# print("Correct Password")
+#
+#
+# ## Using while loop a definite number of times
+# x = 1
+# while x <= 6:
+#     print(x)
+#     x += 1
 
-while password != "pass123":
-    password = input("Enter Password: ")
-print("Correct Password")
+""""""
 
+## To do list code
 
-## Using while loop a definite number of times
-x = 1
-while x <= 6:
-    print(x)
-    x += 1
+## Using 'python Methods' we can do all kinds of things. Methods are functions associated with objects / datatype. Methods can be accessed through the "Dot Notation"
+userPrompt = "Enter a To Do Item: "  # The message that user sees when prompted for input
+
+todoList = []  # Declared an empty list that be used later
+
+while True:  # This loop will continue to run infinitely unless we add something to the code inside it to terminate it.
+    # anything after the colon is indented so that it runs inside the loop
+    todo = input(userPrompt)  # User input stored in a variable
+    todo = todo.capitalize()  # Using the capitalize method for the string datatype inside the variable, the value is capitalized and stored back in the variable, replacing the old non capitalized value.
+    todoList.append(todo)  # Using the append method for the list datatype inside the variable, value of the variable given as an argument is added to the bottom of the list
+    print(todoList)
