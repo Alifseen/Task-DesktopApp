@@ -1,11 +1,13 @@
-""" Creative and importing Local Modules
-It is better to separate the declaration of functions in a different file and import that file to be able to call them in the current script. That separate file is called a module
-Syntax for that can be either importing specific functions declared from the file using "from file import function", or importing the whole file "import file" and then using function as method of that file
-Note the file must be in the same directory for "import file" to work, if it is in a separate directory, we will have to use "from directoryname import file"
-Importing file can be better for readability since it allows you to know where the called function is coming from if you need to change anything.
+""" Importing and using standard/builtin modules.
+Most of the actions and processes, not counting highly customized functions you create for your own program, have been developed as functions by python's team as well as third parties. For example you can use timestamp functionality using builtin time module.
+You can find and learn about any type of function by having an understanding of how python works.
 """
-# from functions import get_todo_list, set_todo_list  ## Option 1
-import functions  # Option 2
+import functions
+import time  ## Located in directory where the python interpreter is installed
+
+timeNow = time.strftime("%H:%M:%S")  ## We add a time stamp
+dateNow = time.strftime("%d, %b,:%Y")  ## We add a date stamp
+print(f"Time: {timeNow} | Date: {dateNow}")
 
 userPrompt = "Enter a To Do Item: "
 userPromptSelection = ("\nType Command: add | complete | edit | show | exit\n"
@@ -22,11 +24,11 @@ while True:
                 print("You did not enter any task. Try Again!")
                 continue
 
-            todoList = functions.get_todo_list()  ## Calling get to do list function as a method knowing that it is stored in functions file
+            todoList = functions.get_todo_list()
 
             todoList.append(todo)
 
-            functions.set_todo_list(todoList)  ## Calling set to do list function as a method knowing that it is stored in functions file
+            functions.set_todo_list(todoList)
 
             print("ToDo item Added!")
         except ValueError:
@@ -102,4 +104,3 @@ while True:
         print("Incorrect Command")
 
 print("Good Bye")
-
