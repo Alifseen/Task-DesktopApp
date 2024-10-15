@@ -1,19 +1,11 @@
-"""Default Argument
-We improve the code by making the filepath a default argument with the ability to change it if we want when calling the function.
-Order is important, Default parameters are always at the end when defining a function, they can not be before any non-default parameter
+""" Creative and importing Local Modules
+It is better to separate the declaration of functions in a different file and import that file to be able to call them in the current script. That separate file is called a module
+Syntax for that can be either importing specific functions declared from the file using "from file import function", or importing the whole file "import file" and then using function as method of that file
+Note the file must be in the same directory for "import file" to work, if it is in a separate directory, we will have to use "from directoryname import file"
+Importing file can be better for readability since it allows you to know where the called function is coming from if you need to change anything.
 """
-
-
-def get_todo_list(filepath="files/todos.txt"):  ## Setting the filepath as a default paramenter so we do not have to add it everytime we call this function, however, this default parameter can be changed if we decided to enter a file path when calling the function.
-    with open(filepath) as file:
-        todoTxtFile = file.readlines()
-        return todoTxtFile
-
-
-def set_todo_list(set_list, filepath="files/todos.txt"):  ## Default parameters must be at the end of the function, and not have any non-default parameters after them in order to work properly.
-    with open(filepath, "w") as file:
-        file.writelines(set_list)
-
+# from functions import get_todo_list, set_todo_list  ## Option 1
+import functions  # Option 2
 
 userPrompt = "Enter a To Do Item: "
 userPromptSelection = ("\nType Command: add | complete | edit | show | exit\n"
@@ -30,11 +22,11 @@ while True:
                 print("You did not enter any task. Try Again!")
                 continue
 
-            todoList = get_todo_list()
+            todoList = functions.get_todo_list()  ## Calling get to do list function as a method knowing that it is stored in functions file
 
             todoList.append(todo)
 
-            set_todo_list(todoList)
+            functions.set_todo_list(todoList)  ## Calling set to do list function as a method knowing that it is stored in functions file
 
             print("ToDo item Added!")
         except ValueError:
@@ -43,7 +35,7 @@ while True:
 
     elif userAction.startswith("complete"):
         try:
-            todoList = get_todo_list()
+            todoList = functions.get_todo_list()
 
             while True:
                 taskNumber = int(userAction[9:]) - 1
@@ -60,7 +52,7 @@ while True:
                     case _:
                         print("Only enter y for yes or n for no, Select task again")
 
-            set_todo_list(todoList)
+            functions.set_todo_list(todoList)
 
         except ValueError:
             print("Command Argument is invalid")
@@ -72,7 +64,7 @@ while True:
 
     elif userAction.startswith("edit"):
         try:
-            todoList = get_todo_list()
+            todoList = functions.get_todo_list()
 
             print("ToDo List:")
 
@@ -86,7 +78,7 @@ while True:
             todoList[taskNumber] = newTodo.capitalize()
             print("list Updated!")
 
-            set_todo_list(todoList)
+            functions.set_todo_list(todoList)
 
         except ValueError:
             print("Command Argument is invalid")
@@ -97,7 +89,7 @@ while True:
             continue
 
     elif userAction.startswith("show"):
-        todoList = get_todo_list()
+        todoList = functions.get_todo_list()
 
         for index, task in enumerate(todoList):
             task = task.strip("\n")
@@ -110,3 +102,4 @@ while True:
         print("Incorrect Command")
 
 print("Good Bye")
+
