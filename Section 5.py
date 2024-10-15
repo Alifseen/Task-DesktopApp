@@ -1,18 +1,33 @@
 """enumerate() function
-enumerate returns the index as well as the value in a list.
-enumerate object are not displayable by themselves but they can be printed after converting into a list of tuples
+Improving To do list by adding numbers before the task
 """
 
-a = enumerate(["a", "b", "c"])
-print(a)  # prints the object location in memory
-print(list(a))  # prints index and items as a tuple inside a list
+userPrompt = "Enter a To Do Item: "
+userPromptSelection = "Type add or edit or show or exit: "
 
-""""""
+todoList = []
 
-## Whenever a for loop ends the last iteration of the loop is still stored in the variables
+while True:
+    userAction = input(userPromptSelection).lower().strip()
 
-alist = ["abc", "def", "ghi"]
-for index, item in enumerate(alist):
-    print(index, item)
+    match userAction:
+        case "add":
+            todo = input(userPrompt)
+            todo = todo.capitalize()
+            todoList.append(todo)
+        case "edit":
+            for task in todoList:
+                print(todoList.index(task)+1, task)  ## We can use the index method and add 1 to get the task number
+            taskNumber = (int(input("Enter the task number from the Task list you want to edit: "))) - 1
+            print("Task selected: ", todoList[taskNumber])
+            newTodo = input("Enter the new Todo Task: ")
+            todoList[taskNumber] = newTodo.capitalize()
+            print("list Updated!")
+        case "show":
+            for index, task in enumerate(todoList):  ## An alternate to using index method is to use the "enumerate()" function which allows processing key-value pairs, so index and value in list
+                print(index+1, task)
+        case "exit":
+            break
 
-print(f"final values of the loop: INDEX:{index}, VALUE:{item}")  # once the loop ends, we can still access the index and item variable with the values in the last iteration
+print("Good Bye")
+
