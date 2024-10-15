@@ -1,38 +1,24 @@
-"""List Mutability
-Lists are mutable, which means they can be changed, where as strings are immutable, meaning they can not be changed. Even though string index can be accessed to get the character at that index position, they can not be assigned a new value.
-"""
+## Index() method
+alist = ["a", "b", "c", "d", "e"]
+print(alist.index("a"))  # this will print the index position of "a" which is 0
 
-## List Index
-## Lists can be indexed using the square bracket notation with index number
-## User needs to be able to edit the task item they have in the to do list. To edit the to do item, they need to be select it using list indexing.
-## Remember the index starts from 0, not 1.
+""""""
 
-userPrompt = "Enter a To Do Item: "
-userPromptSelection = "Type add or edit or show or exit: "  # Added another prompt of "edit" for the user to type
+## setitem method
+alist = ["a", "b", "c", "d", "e"]
+alist.__setitem__(0, "new a")  # this takes the key (which is index in case of list) as first argument and the new value as the second argument, to replace the existing value. In this case, it replaces "a" with "new a"
+print(alist)
 
-todoList = []
+""""""
 
-while True:
-    userAction = input(userPromptSelection).lower().strip()
+## String Mutability
+## The string datatype has a method called "replace()" which takes two arguments, 1st is the character to be replaced, second is the replacement character.
+filename = "1. This is a file.txt"
+filename = filename.replace(".", "-", 1)  # create a new string with the dash instead of a dot and save it in the same variable to overwrite the old value. The 1 at the end makes sure that only the first occurrence of the dot is changed, not the subsequent ones.
+print(filename)
 
-    match userAction:
-        case "add":
-            todo = input(userPrompt)
-            todo = todo.capitalize()
-            todoList.append(todo)
-        case "edit":  ## Added another case statements that checks for the new prompt option
-            for task in todoList:
-                print(task)
-            taskNumber = int(input("Enter the task number from the Task list you want to edit: ")) - 1  ## We need to ask the user which task from the list they want to edit. We can do that by getting them to type the exact task string OR we can get them to simply type the number of where that task is located which is more convenient. Since the list indexing needs a number and the input function returns a string, we convert the string into a number using the "int()" function. Since the user thinks the list starts from 1, whereas it actually starts from 0, we -1 from whatever the user enters to get the correct index number, that value is stored here.
-            print("Task selected: ", todoList[taskNumber])
-            newTodo = input("Enter the new Todo Task: ")
-            todoList[taskNumber] = newTodo.capitalize()
-            print("list Updated!")
-
-        case "show":
-            for task in todoList:
-                print(task)
-        case "exit":
-            break
-
-print("Good Bye")
+## Alternatively if the string is in a list, use replace in a for loop
+filenames = ["1. This is a file.txt", "2. This is another file.txt", "3. This is last file.txt"]
+for name in filenames:
+    name = name.replace(".", "-", 1)
+    print(name)
