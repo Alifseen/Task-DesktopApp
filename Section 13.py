@@ -1,16 +1,16 @@
-"""Custom Functions with Multiple arguments.
-Arguments are inputs that function need to be performed operations. argument value is based on the parameters defined in the function
-
+"""Default Argument
+We improve the code by making the filepath a default argument with the ability to change it if we want when calling the function.
+Order is important, Default parameters are always at the end when defining a function, they can not be before any non-default parameter
 """
 
 
-def get_todo_list(filepath):  ## we can change the file path to a variable as well as the mode into a variable.
+def get_todo_list(filepath="files/todos.txt"):  ## Setting the filepath as a default paramenter so we do not have to add it everytime we call this function, however, this default parameter can be changed if we decided to enter a file path when calling the function.
     with open(filepath) as file:
         todoTxtFile = file.readlines()
         return todoTxtFile
 
 
-def set_todo_list(filepath, set_list):  ## This is a procedural function and does not need to be assigned to a variable or return anything because it just performs a series of actions to a file
+def set_todo_list(set_list, filepath="files/todos.txt"):  ## Default parameters must be at the end of the function, and not have any non-default parameters after them in order to work properly.
     with open(filepath, "w") as file:
         file.writelines(set_list)
 
@@ -30,11 +30,11 @@ while True:
                 print("You did not enter any task. Try Again!")
                 continue
 
-            todoList = get_todo_list("files/todos.txt")  ## Calling custom function with an argument
+            todoList = get_todo_list()
 
             todoList.append(todo)
 
-            set_todo_list("files/todos.txt", todoList)
+            set_todo_list(todoList)
 
             print("ToDo item Added!")
         except ValueError:
@@ -43,7 +43,7 @@ while True:
 
     elif userAction.startswith("complete"):
         try:
-            todoList = get_todo_list("files/todos.txt")
+            todoList = get_todo_list()
 
             while True:
                 taskNumber = int(userAction[9:]) - 1
@@ -60,7 +60,7 @@ while True:
                     case _:
                         print("Only enter y for yes or n for no, Select task again")
 
-            set_todo_list("files/todos.txt", todoList)
+            set_todo_list(todoList)
 
         except ValueError:
             print("Command Argument is invalid")
@@ -72,7 +72,7 @@ while True:
 
     elif userAction.startswith("edit"):
         try:
-            todoList = get_todo_list("files/todos.txt")
+            todoList = get_todo_list()
 
             print("ToDo List:")
 
@@ -86,7 +86,7 @@ while True:
             todoList[taskNumber] = newTodo.capitalize()
             print("list Updated!")
 
-            set_todo_list("files/todos.txt", todoList)  ## Calling Custom funciton with 2 arguments
+            set_todo_list(todoList)
 
         except ValueError:
             print("Command Argument is invalid")
@@ -97,7 +97,7 @@ while True:
             continue
 
     elif userAction.startswith("show"):
-        todoList = get_todo_list("files/todos.txt")
+        todoList = get_todo_list()
 
         for index, task in enumerate(todoList):
             task = task.strip("\n")
