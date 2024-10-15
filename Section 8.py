@@ -1,5 +1,5 @@
-""""with context manager
-with context manager closes the file automatically.
+"""
+Updating the edit and complete functionality to interact with the to do list text file as well
 """
 
 userPrompt = "Enter a To Do Item: "
@@ -13,40 +13,59 @@ while True:
         case "add":
             todo = input(userPrompt).capitalize() + "\n"
 
-            with open("files/todos.txt", "r") as file:  ## using context manager to read file
+            with open("files/todos.txt", "r") as file:
                 todoList = file.readlines()
 
             todoList.append(todo)
 
-            with open("files/todos.txt", "w") as file:  ## using context manager to write file
+            with open("files/todos.txt", "w") as file:
                 file.writelines(todoList)
 
         case "complete":
-            for task in todoList:
-                print(f"{todoList.index(task) + 1}. {task}")
+            """ My Logic """
+            with open("files/todos.txt", "r") as file:  ## reads the tasks from the text file, saves them in python variable and prints them
+                todoList = file.readlines()
+            for index, task in enumerate(todoList):
+                task = task.strip("\n")
+                print(f"{index + 1}. {task}")
+
             while True:
                 taskNumber = int(input("Enter the task number from the Task list you want to mark as complete: ")) - 1
-                confirm = input(f"Are you sure you want to mark '{todoList[taskNumber]}' as complete. Enter Y/N: ").lower().strip()  #
+                confirm = input(
+                    f"Are you sure you want to mark '{todoList[taskNumber].strip("\n")}' as complete. Enter Y/N: ").lower().strip()  ##
                 match confirm:
                     case "y":
                         todoList.pop(taskNumber)
+                        print("Done!")
                         break
                     case "n":
-                        print("Select again")
+                        print("Try again")
+                        break
                     case _:
                         print("Only enter y for yes or n for no, Select task again")
 
+            with open("files/todos.txt", "w") as file:  ## writes the new list in the text file
+                file.writelines(todoList)
+
         case "edit":
-            for task in todoList:
-                print(f"{todoList.index(task) + 1}. {task}")
+            """ My logic """
+            with open("files/todos.txt", "r") as file:  ## reads the tasks from the text file, saves them in python variable and prints them
+                todoList = file.readlines()
+            for index, task in enumerate(todoList):
+                task = task.strip("\n")
+                print(f"{index + 1}. {task}")
+
             taskNumber = int(input("Enter the task number from the Task list you want to edit: ")) - 1
             print("Task selected: ", todoList[taskNumber])
-            newTodo = input("Enter the new Todo Task: ")
+            newTodo = input("Enter the new Todo Task: ") + "\n"
             todoList[taskNumber] = newTodo.capitalize()
             print("list Updated!")
 
+            with open("files/todos.txt", "w") as file:  ## writes the new list in the text file
+                file.writelines(todoList)
+
         case "show":
-            with open("files/todos.txt", "r") as file:  ## Using context manager to read file
+            with open("files/todos.txt", "r") as file:
                 todoList = file.readlines()
 
             for index, task in enumerate(todoList):
@@ -57,4 +76,3 @@ while True:
             break
 
 print("Good Bye")
-
