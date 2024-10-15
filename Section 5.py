@@ -1,5 +1,6 @@
-"""enumerate() function
-Improving To do list by adding numbers before the task
+"""f-strings
+Using 'f-strings' to improve the code output to have complete control over what the program prints.
+initiated by 'f' before the quotations "" and has variables inside curly brackets {}
 """
 
 userPrompt = "Enter a To Do Item: "
@@ -17,17 +18,16 @@ while True:
             todoList.append(todo)
         case "edit":
             for task in todoList:
-                print(todoList.index(task)+1, task)  ## We can use the index method and add 1 to get the task number
-            taskNumber = (int(input("Enter the task number from the Task list you want to edit: "))) - 1
+                print(f"{todoList.index(task) + 1}. {task}")  ## We use f-string here
+            taskNumber = int(input("Enter the task number from the Task list you want to edit: ")) - 1
             print("Task selected: ", todoList[taskNumber])
             newTodo = input("Enter the new Todo Task: ")
             todoList[taskNumber] = newTodo.capitalize()
             print("list Updated!")
         case "show":
-            for index, task in enumerate(todoList):  ## An alternate to using index method is to use the "enumerate()" function which allows processing key-value pairs, so index and value in list
-                print(index+1, task)
+            for index, task in enumerate(todoList):
+                print(f"{index + 1}. {task}")  ## We use f-string here
         case "exit":
             break
 
 print("Good Bye")
-
