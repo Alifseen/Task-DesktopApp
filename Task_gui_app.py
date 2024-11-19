@@ -1,11 +1,3 @@
-"""Finishing up
-1. Add exit and complete command
-2. Add error handling
-3. Add time
-4. Change theme
-5. Check if the text file exists using os module, if it does not, then create it.
-Note: I changed the filepath of txt file so that it is not in a folder
-"""
 import functions
 import FreeSimpleGUI as gui
 import time
@@ -25,8 +17,6 @@ confirmationlabel = gui.Text("", key="message", text_color="white")
 
 inputBox = gui.InputText(tooltip="Enter a Task", key="inputTask")
 
-# addButton = gui.Button("Add", key="addTask")
-# completeButton = gui.Button("Mark Complete", key="markDone")
 
 """ We made the add and complete button into an icon buttons using the code below """
 addButton = gui.Button(size=2, image_source="add.png",mouseover_colors="LightBlue2", tooltip="Add a Task", key="addTask")
@@ -104,38 +94,3 @@ while True:
 
 windows.close()
 
-
-"""
-Another example of using Column to align the window
-import FreeSimpleGUI as sg
-# from zip_extractor import extract_archive
- 
-sg.theme("Black")
- 
-label1 = sg.Text("Select archive:")
-input1 = sg.Input()
-choose_button1 = sg.FileBrowse("Choose", key="archive")
- 
-label2 = sg.Text("Select destination directory:")
-input2 = sg.Input()
-choose_button2 = sg.FolderBrowse("Choose", key="folder")
- 
-extract_button = sg.Button("Extract")
-output_label = sg.Text(key="output", text_color="green")
- 
-col1 = sg.Column([[label1], [label2]])
-col2 = sg.Column([[input1], [input2]])
-col3 = sg.Column([[choose_button1], [choose_button2]])
- 
-window = sg.Window("Archive Extractor",
-                   layout=[[col1, col2, col3], [extract_button]])
-while True:
-    event, values = window.read()
-    print(event, values)
-    archivepath = values["archive"]
-    dest_dir = values["folder"]
-    extract_archive(archivepath, dest_dir)
-    window["output"].update(value="Extraction Completed!")
- 
-window.close()
-"""

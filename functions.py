@@ -1,7 +1,7 @@
 """ Added in section 15
 Defining this constant makes it easier to change the file path if needed in the future
 """
-FILEPATH = "files/todos.txt"
+FILEPATH = "todos.txt"
 
 
 

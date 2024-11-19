@@ -1,5 +1,0 @@
-open the terminal
-make sure you see "(venv)" somewhere in the commnad line directory that you are writing commands to.
-If not, execute "set-executionpolicy remotesigned -scope currentuser" and restart the terminal
-install pyinstaller which is used to create executable files
-in your terminal, write "pyinstaller --onefile --windowed --clean nameofthefile.py"
